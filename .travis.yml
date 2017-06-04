@@ -6,18 +6,18 @@ services:
 
 before_install:
   - docker info
-  - docker build -f X64/gmt8-aliyun/Dockerfile -t tomaer/alpine-gmt8-aliyun:edge .
-  - docker build -f X64/utc-aliyun/Dockerfile -t tomaer/alpine-utc-aliyun:edge .
-  - docker build -f X64/gmt8/Dockerfile -t tomaer/alpine-gmt8:edge .
-  - docker build -f X64/utc/Dockerfile -t tomaer/alpine-utc:edge .
+  - docker build -f X64/gmt8-aliyun/Dockerfile -t tomaer/alpine:edge-gmt8-aliyun .
+  - docker build -f X64/utc-aliyun/Dockerfile -t tomaer/alpine:edge-utc-aliyun .
+  - docker build -f X64/gmt8/Dockerfile -t tomaer/alpine:edge-gmt8 .
+  - docker build -f X64/utc/Dockerfile -t tomaer/alpine:edge-utc .
 script:
   - docker images
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push tomaer/alpine-gmt8-aliyun:edge;
-      docker push tomaer/alpine-utc-aliyun:edge;
-      docker push tomaer/alpine-gmt8:edge;
-      docker push tomaer/alpine-utc:edge;
+      docker push tomaer/alpine:edge-gmt8-aliyun;
+      docker push tomaer/alpine:edge-utc-aliyun;
+      docker push tomaer/alpine:edge-gmt8;
+      docker push tomaer/alpine:edge-utc;
     fi
