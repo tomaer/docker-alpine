@@ -7,14 +7,12 @@ services:
 before_install:
   - docker info
   - docker build -t tomaer/alpine:edge .
-  - docker build -t tomaer/alpine-arm:edge -f ARM/Dockerfile
 
 script:
   - docker images
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push tomaer/alpine:edge;
-    docker push tomaer/alpine-arm:edge;
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push tomaer/alpine:edge;
     fi
