@@ -6,10 +6,10 @@ services:
 
 before_install:
   - docker info
-  - docker build -f X64/gmt8-aliyun/Dockerfile -t tomaer/alpine:edge-gmt8-aliyun .
-  - docker build -f X64/utc-aliyun/Dockerfile -t tomaer/alpine:edge-utc-aliyun .
-  - docker build -f X64/gmt8/Dockerfile -t tomaer/alpine:edge-gmt8 .
-  - docker build -f X64/utc/Dockerfile -t tomaer/alpine:edge-utc .
+  - docker build -f X86/gmt8-aliyun/Dockerfile -t tomaer/alpine:edge-gmt8-aliyun .
+  - docker build -f X86/utc-aliyun/Dockerfile -t tomaer/alpine:edge-utc-aliyun .
+  - docker build -f X86/gmt8/Dockerfile -t tomaer/alpine:edge-gmt8 .
+  - docker build -f X86/utc/Dockerfile -t tomaer/alpine:edge-utc .
 script:
   - docker images
 
